@@ -34,6 +34,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $router = new Router();
 
     $router->add('login', ['controller' => 'AuthController', 'action' => 'login']);
+    $router->add('logout', ['controller' => 'AuthController', 'action' => 'logout']);
 
     $router->dispatch($_SERVER['REQUEST_URI']);
 }

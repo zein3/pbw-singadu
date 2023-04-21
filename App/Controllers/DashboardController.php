@@ -10,6 +10,6 @@ class DashboardController extends Controller
 {
     public function index() {
         AuthHelper::performAuthentication();
-        $this->view('home');
+        $this->view('index');
     }
 }

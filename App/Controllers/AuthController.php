@@ -34,4 +34,9 @@ class AuthController extends Controller
             header('Location: /login?message="Wrong email or password"');
         }
     }
+
+    public function logout() {
+        session_destroy();
+        header('Location: /login?success="Successfully logged out"');
+    }
 }

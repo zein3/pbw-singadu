@@ -240,7 +240,7 @@ textarea.form-input {
   position: relative;
 }
 
-.dropdown > ul {
+.dropdown ul {
   display: none;
   flex-direction: column;
   align-items: center;
@@ -254,35 +254,35 @@ textarea.form-input {
   border-radius: 4px;
 }
 
-.dark .dropdown > ul {
+.dark .dropdown ul {
   background-color: var(--neutral-700);
   color: var(--neutral-100);
 }
 
-.dropdown.open > ul {
+.dropdown.open ul {
   display: flex;
 }
 
-.dropdown > ul > li {
+.dropdown ul li {
   margin: 0.7rem 0;
 }
 
-.dropdown > ul > li > a {
+.dropdown ul li a {
   padding: 0.5rem 1.8rem;
   border-radius: 4px;
   color: var(--neutral-900);
   text-decoration: none;
 }
 
-.dark .dropdown > ul > li > a {
+.dark .dropdown ul li a {
   color: var(--neutral-100);
 }
 
-.dropdown > ul > li > a:hover {
+.dropdown ul li a:hover {
   background-color: rgba(0, 0, 0, 0.3);
 }
 
-.dropdown > ul > li > a:active {
+.dropdown ul li a:active {
   background-color: rgba(0, 0, 0, 0.6);
 }
 
@@ -390,6 +390,46 @@ textarea.form-input {
   font-size: 0.8rem;
   padding: 0;
   margin: 0 0.5rem;
+}
+
+.alert {
+  padding: 0.5rem 0.8rem;
+  margin: 0.1rem 0;
+  display: none;
+  width: 80%;
+  border-radius: 4px;
+  font-weight: 600;
+  outline: 2px solid black;
+}
+
+.alert.open {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.alert.success {
+  background-color: var(--success-200);
+  color: var(--success-600);
+  outline-color: var(--success-600);
+}
+
+.dark .alert.success {
+  background-color: var(--success-800);
+  color: var(--success-400);
+  outline-color: var(--success-400);
+}
+
+.alert.danger {
+  background-color: var(--danger-200);
+  color: var(--danger-600);
+  outline-color: var(--danger-600);
+}
+
+.dark .alert.danger {
+  background-color: var(--danger-800);
+  color: var(--danger-400);
+  outline-color: var(--danger-400);
 }
 
 @media only screen and (min-width: 768px) {

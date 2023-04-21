@@ -2,6 +2,8 @@
 
 namespace App\Core;
 
+use App\Helper\AuthHelper;
+
 abstract class Controller
 {
     protected $route_params = [];
@@ -11,6 +13,7 @@ abstract class Controller
     }
 
     public function view(string $view, array $data = []): void {
+        $user = AuthHelper::getAuthenticatedUser();
         require_once __DIR__ . '/../Views/' . $view . '.php';
     }
 

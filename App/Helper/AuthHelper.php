@@ -18,7 +18,7 @@ class AuthHelper
         }
     }
 
-    public static function getAuthenticatedUser(): User {
+    public static function getAuthenticatedUser(): User|null {
         if (!AuthHelper::isUserAuthenticated()) {
             return null;
         }

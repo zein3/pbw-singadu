@@ -91,4 +91,8 @@ abstract class Model
         $query->setFetchMode(PDO::FETCH_CLASS, get_called_class());
         return $query->fetch();
     }
+
+    public function getId() {
+        return $this->id;
+    }
 }

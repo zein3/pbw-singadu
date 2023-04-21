@@ -3,7 +3,7 @@
         <title>Testing</title>
     </head>
     <body>
-        <h1>Hello <?= $data['name'] ?></h1>
+        <h1>Hello</h1>
         <?php if(isset($data['roles'])): ?>
             <ol>Roles
             <?php foreach ($data['roles'] as $role): ?>

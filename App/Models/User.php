@@ -33,4 +33,15 @@ class User extends Model
             $root->save();
         }
     }
+
+    public static function findByEmail(string $email): User|null {
+        $sql = "SELECT * FROM users WHERE email = ?";
+        $query = Database::getPDO()->prepare($sql);
+        $query->execute([$email]);
+        
+        $query->setFetchMode(PDO::FETCH_CLASS, User::class);
+        $user = $query->fetch();
+
+        return ($user) ? $user : null;
+    }
 }

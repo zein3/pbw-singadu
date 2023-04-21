@@ -23,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $router = new Router();
 
     $router->add('', ['controller' => 'DashboardController', 'action' => 'index']);
-    $router->add('login', ['controller' => 'AuthController', 'action' => 'login']);
+    $router->add('login', ['controller' => 'AuthController', 'action' => 'showLogin']);
     // $router->add('posts', ['controller' => 'HomeController', 'action' => 'show']);
     // $router->add('posts/{id:\d+}', ['controller' => 'Posts', 'action' => 'show']);
     // $router->add('hello/{name}', ['controller' => 'HomeController', 'action' => 'showHello']);
@@ -32,4 +32,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $router->dispatch($_SERVER['REQUEST_URI']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $router = new Router();
+
+    $router->add('login', ['controller' => 'AuthController', 'action' => 'login']);
+
+    $router->dispatch($_SERVER['REQUEST_URI']);
 }

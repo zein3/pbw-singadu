@@ -22,7 +22,7 @@
         <h2 class="h2">SISTEM PENGADUAN TERPADU</h2>
       </header>
 
-      <form action="./index.html">
+      <form action="/login" method="POST">
         <div class="form-div big">
           <input class="form-input" type="email" name="email" placeholder="Email" required>
         </div>

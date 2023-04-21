@@ -65,6 +65,7 @@ class Router
      */
     public function dispatch(string $url): void {
         $url = $this->removeQueryString($url);
+        session_start();
 
         try {
             if (!$this->match($url)) {

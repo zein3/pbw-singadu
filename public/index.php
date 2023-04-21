@@ -18,7 +18,7 @@ if (!DotEnv::load("../.env")) {
     return;
 }
 
-// contoh route
+session_start();
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $router = new Router();
 

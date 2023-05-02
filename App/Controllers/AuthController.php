@@ -9,6 +9,7 @@ use App\Models\User;
 class AuthController extends Controller
 {
     public function showLogin() {
+        new User(); // agar root user dibuat jika tidak ada user
         if (AuthHelper::isUserAuthenticated()) {
             header("Location: /");
             return;

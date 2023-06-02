@@ -24,6 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     $router->add('', ['controller' => 'DashboardController', 'action' => 'index']);
     $router->add('login', ['controller' => 'AuthController', 'action' => 'showLogin']);
+
+    $router->add('api/v1/problem-type', ['controller' => 'ProblemTypeController', 'action' => 'index']);
+
     // $router->add('posts', ['controller' => 'HomeController', 'action' => 'show']);
     // $router->add('posts/{id:\d+}', ['controller' => 'Posts', 'action' => 'show']);
     // $router->add('hello/{name}', ['controller' => 'HomeController', 'action' => 'showHello']);
@@ -36,5 +39,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $router->add('login', ['controller' => 'AuthController', 'action' => 'login']);
     $router->add('logout', ['controller' => 'AuthController', 'action' => 'logout']);
 
+    $router->add('api/v1/problem-type', ['controller' => 'ProblemTypeController', 'action' => 'store']);
+
     $router->dispatch($_SERVER['REQUEST_URI']);
+} else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+
+} else if ($_SERVER['REQUEST_METHOD'] === 'DESTROY') {
+    $router->add('api/v1/problem-type/{id:\d+}', ['controller' => 'ProblemTypeController', 'action' => 'destroy']);
 }

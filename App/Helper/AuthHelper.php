@@ -18,6 +18,14 @@ class AuthHelper
         }
     }
 
+    public static function performAuthorization(string $role): void {
+        AuthHelper::performAuthentication();
+        $user = AuthHelper::getAuthenticatedUser();
+        if (strtolower($user->role) !== strtolower($role)) {
+            throw new \Exception("Forbidden", 403);
+        }
+    }
+
     public static function getAuthenticatedUser(): User|null {
         if (!AuthHelper::isUserAuthenticated()) {
             return null;

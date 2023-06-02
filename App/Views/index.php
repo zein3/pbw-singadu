@@ -17,11 +17,9 @@
   <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js@4.3.0/dist/chart.umd.min.js"></script>
 </head>
 <body>
-  <!-- <nav th:replace="~{fragments/nav :: nav}"></nav> -->
   <?php include 'components/navbar.php' ?>
 
   <main class="main">
-    <!-- <nav th:replace="~{fragments/sidebar :: sidebar}"></nav> -->
     <?php include 'components/sidebar.php' ?>
     <div class="content">
 

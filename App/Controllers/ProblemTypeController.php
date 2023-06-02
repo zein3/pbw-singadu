@@ -13,6 +13,7 @@ class ProblemTypeController extends Controller {
     }
 
     public function store() {
+        AuthHelper::performAuthorization("admin");
         $body = file_get_contents("php://input");
         $data = json_decode($body);
 
@@ -29,6 +30,7 @@ class ProblemTypeController extends Controller {
     }
 
     public function destroy() {
+        AuthHelper::performAuthorization("admin");
         $ptype = ProblemType::get($this->route_params['id']);
         if ($ptype == null) {
             http_response_code(404);

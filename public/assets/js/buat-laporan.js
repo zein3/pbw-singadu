@@ -3,7 +3,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const csrfToken = document.querySelector("#csrf").getAttribute("value");
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
     console.log(data);
@@ -12,7 +11,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("/api/v1/report", {
         method: "POST",
         headers: {
-          'X-CSRF-TOKEN': csrfToken,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)

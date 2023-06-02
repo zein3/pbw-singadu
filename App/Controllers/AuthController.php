@@ -23,7 +23,7 @@ class AuthController extends Controller
 
         $user = User::findByEmail($email);
         if ($user == null) {
-            header('Location: /login?message="Wrong email or password"');
+            header('Location: /login?error="Wrong email or password"');
         }
 
         if (password_verify($password, $user->password)) {
@@ -32,7 +32,7 @@ class AuthController extends Controller
 
             header("Location: /");
         } else {
-            header('Location: /login?message="Wrong email or password"');
+            header('Location: /login?error="Wrong email or password"');
         }
     }
 

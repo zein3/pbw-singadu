@@ -299,6 +299,16 @@ textarea.form-input {
   color: var(--neutral-100);
 }
 
+.success.card {
+  background-color: var(--success-500);
+  color: var(--neutral-100);
+}
+
+.dark .success.card {
+  background-color: var(--success-600);
+  color: var(--neutral-100);
+}
+
 .card-header {
   display: flex;
   flex-direction: row;
@@ -385,6 +395,12 @@ textarea.form-input {
   width: 100%;
 }
 
+.modal > .success.card {
+  max-width: 500px;
+  width: 100%;
+  padding: 0.8rem 1.6rem;
+}
+
 .text-error {
   font-weight: 400;
   font-size: 0.8rem;
@@ -394,7 +410,7 @@ textarea.form-input {
 
 .alert {
   padding: 0.5rem 0.8rem;
-  margin: 0.1rem 0;
+  margin: 1rem auto;
   display: none;
   width: 80%;
   border-radius: 4px;

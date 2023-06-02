@@ -78,6 +78,36 @@ main.main {
   color: var(--neutral-100);
 }
 
+.welcome {
+  font-size: 1.6rem;
+  font-weight: 600;
+  margin: 1.5rem 0;
+}
+
+.stat-grid {
+  width: 100%;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 3fr;
+  gap: 0.4rem 0.2rem;
+}
+
+.stat-grid-item {
+  justify-self: center;
+  align-self: center;
+  text-align: center;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-grid-icon {
+  width: 4rem;
+  height: 4rem;
+}
+
 @media only screen and (min-width: 768px) {
   .sidebar {
     position: relative;

@@ -10,13 +10,16 @@ use ReflectionProperty;
 abstract class Model
 {
     protected $table_name;
-    protected $id;
+    public $id;
 
     private function getProperties() {
         $props = (new ReflectionClass($this))->getProperties(ReflectionProperty::IS_PUBLIC);
 
         $ret = [];
-        foreach ($props as $prop) {
+        foreach ($props as $i => $prop) {
+            if ($prop->getName() === "id") {
+                unset($props[$i]);
+            }
             $ret[$prop->getName()] = $prop->getValue($this);
         }
 

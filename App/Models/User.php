@@ -34,6 +34,17 @@ class User extends Model
         }
     }
 
+    public function reports() {
+        $sql = "SELECT * FROM reports WHERE reporter_id = ?";
+        $query = Database::getPDO()->prepare($sql);
+        $query->execute([$this->id]);
+
+        $query->setFetchMode(PDO::FETCH_CLASS, Report::class);
+        $reports = $query->fetchAll();
+
+        return $reports;
+    }
+
     public static function findByEmail(string $email): User|null {
         $sql = "SELECT * FROM users WHERE email = ?";
         $query = Database::getPDO()->prepare($sql);
@@ -43,5 +54,16 @@ class User extends Model
         $user = $query->fetch();
 
         return ($user) ? $user : null;
+    }
+
+    public static function findBySupervisorId($supervisor_id) {
+        $sql = "SELECT * FROM users WHERE supervisor_id = ?";
+        $query = Database::getPDO()->prepare($sql);
+        $query->execute([$supervisor_id]);
+
+        $query->setFetchMode(PDO::FETCH_CLASS, User::class);
+        $users = $query->fetchAll();
+
+        return $users;
     }
 }

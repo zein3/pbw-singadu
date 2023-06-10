@@ -5,12 +5,31 @@ namespace App\Controllers;
 use App\Core\Controller;
 use App\Helper\AuthHelper;
 use App\Models\Report;
+use App\Models\User;
 use PDOException;
 
 class ReportController extends Controller {
     public function index() {
         AuthHelper::performAuthentication();
         $user = AuthHelper::getAuthenticatedUser();
+        
+        $role = strtolower($user->role);
+        if ($role === 'admin') {
+            $this->json(Report::getAll());
+        } else if ($role === 'pengawas') {
+            $users = User::findBySupervisorId($user->id);
+            $users_id = array_values(array_map(fn ($user) => $user->id, $users));
+            array_push($users_id, $user->id);
+
+            $reports = Report::getAll();
+            $filteredReports = array_values(array_filter($reports, function ($report) use ($users_id) {
+                return in_array($report->reporter_id, $users_id);
+            }));
+
+            $this->json($filteredReports);
+        } else {
+            $this->json($user->reports());
+        }
     }
 
     public function store() {

@@ -9,10 +9,12 @@ use PDOException;
 
 class ReportController extends Controller {
     public function index() {
-
+        AuthHelper::performAuthentication();
+        $user = AuthHelper::getAuthenticatedUser();
     }
 
     public function store() {
+        AuthHelper::performAuthentication();
         $body = file_get_contents('php://input');
         $data = json_decode($body);
         
@@ -22,7 +24,7 @@ class ReportController extends Controller {
             return;
         }
 
-        error_log(print_r($data, true));
+        // error_log(print_r($data, true));
         try {
             $report = new Report();
             $report->description = $data->description;
@@ -41,10 +43,10 @@ class ReportController extends Controller {
     }
 
     public function update() {
-
+        AuthHelper::performAuthentication();
     }
 
     public function destroy() {
-
+        AuthHelper::performAuthentication();
     }
 }

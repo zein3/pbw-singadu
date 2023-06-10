@@ -15,7 +15,7 @@ class ReportController extends Controller {
         
         $role = strtolower($user->role);
         if ($role === 'admin') {
-            $this->json(Report::getAll());
+            $results = Report::getAll();
         } else if ($role === 'pengawas') {
             $users = User::findBySupervisorId($user->id);
             $users_id = array_values(array_map(fn ($user) => $user->id, $users));
@@ -26,10 +26,12 @@ class ReportController extends Controller {
                 return in_array($report->reporter_id, $users_id);
             }));
 
-            $this->json($filteredReports);
+            $results = $filteredReports;
         } else {
-            $this->json($user->reports());
+            $results = $user->reports();
         }
+
+        $this->json(array_values(array_map(fn ($result) => $result->eagerLoad(), $results)));
     }
 
     public function store() {

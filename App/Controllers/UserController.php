@@ -24,6 +24,10 @@ class UserController extends Controller {
 
     public function getUsersSupervisedBy() {
         AuthHelper::performAuthentication();
+        $supervisorId = $this->route_params['id'];
+
+        $users = User::getAll();
+        $this->json(array_values(array_filter($users, fn ($user) => $user->supervisor_id == $supervisorId)));
     }
 
     public function store() {

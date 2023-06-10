@@ -21,9 +21,9 @@ const openEditModal = (id) => {
   if (user.role === "PENCACAH") {
     editSupervisorDiv.style.display = "block";
     editSupervisorInput.disabled = false;
-    if (user.supervisor != null) {
+    if (user.supervisor_id != null) {
       Array.from(editSupervisorInput.children).map(option => {
-        option.selected = (option.value == user.supervisor.id);
+        option.selected = (option.value == user.supervisor_id);
       })
     } else {
       Array.from(editSupervisorInput.children).map(option => option.selected = false);
@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     loadUser(users.filter(user => q.test(user.name) || q.test(user.email)));
   })
 
-
   const selectSupervisorDiv = document.querySelector("#edit-supervisor");
   const selectSupervisorInput = selectSupervisorDiv.querySelector("select");
   document.querySelector("#edit-role").addEventListener("change", (e) => {
@@ -114,6 +113,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     selectSupervisorInput.disabled = (e.target.value !== "PENCACAH");
   });
 
-  await updatePilihanPengawas();
   await getUsersData();
+  await updatePilihanPengawas();
 });

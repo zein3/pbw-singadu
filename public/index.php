@@ -30,6 +30,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $router->add('user', ['controller' => 'DashboardController', 'action' => 'user']);
     $router->add('jenis-masalah', ['controller' => 'DashboardController', 'action' => 'problemType']);
 
+    $router->add('api/v1/user', ['controller' => 'UserController', 'action' => 'index']);
+    $router->add('api/v1/user/role/{role}', ['controller' => 'UserController', 'action' => 'getUsersWithRole']);
+    $router->add('api/v1/user/supervised/{id:\d+}', ['controller' => 'UserController', 'action' => 'getUsersSupervisedBy']);
     $router->add('api/v1/report', ['controller' => 'ReportController', 'action' => 'index']);
     $router->add('api/v1/problem-type', ['controller' => 'ProblemTypeController', 'action' => 'index']);
 
@@ -42,12 +45,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $router->add('login', ['controller' => 'AuthController', 'action' => 'login']);
     $router->add('logout', ['controller' => 'AuthController', 'action' => 'logout']);
 
+    $router->add('api/v1/user', ['controller' => 'UserController', 'action' => 'store']);
     $router->add('api/v1/report', ['controller' => 'ReportController', 'action' => 'store']);
     $router->add('api/v1/problem-type', ['controller' => 'ProblemTypeController', 'action' => 'store']);
 
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
+    $router->add('api/v1/user/{id:\d+}', ['controller' => 'UserController', 'action' => 'update']);
     $router->add('api/v1/report/{id:\d+}', ['controller' => 'ReportController', 'action' => 'update']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
+    $router->add('api/v1/user/{id:\d+}', ['controller' => 'UserController', 'action' => 'destroy']);
     $router->add('api/v1/report/{id:\d+}', ['controller' => 'ReportController', 'action' => 'destroy']);
     $router->add('api/v1/problem-type/{id:\d+}', ['controller' => 'ProblemTypeController', 'action' => 'destroy']);
 }

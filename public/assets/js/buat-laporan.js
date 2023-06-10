@@ -19,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (response.status == 200) {
         document.querySelector("#success-modal-message").innerText = "Berhasil menambah laporan";
         document.querySelector("#success-modal").classList.add("open");
+        document.querySelector("#create-report-form").querySelector("textarea[name='description']").value = "";
       } else {
         const error = await response.json();
         showError(error, "add-report-error-alert");

@@ -1,7 +1,7 @@
 let users = [];
 
 const openEditModal = (id) => {
-  const user = users.find(u => u.id === id);
+  const user = users.find(u => u.id == id);
   if (user == undefined)
     return;
 

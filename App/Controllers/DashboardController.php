@@ -58,6 +58,11 @@ class DashboardController extends Controller
 
     public function profile() {
         AuthHelper::performAuthentication();
-        $this->view('user/profile');
+
+        $user = AuthHelper::getAuthenticatedUser();
+        $this->view('user/profile', [
+            'name' => $user->name,
+            'email' => $user->email
+        ]);
     }
 }

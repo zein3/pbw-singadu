@@ -36,11 +36,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     $router->add('api/v1/report', ['controller' => 'ReportController', 'action' => 'index']);
     $router->add('api/v1/problem-type', ['controller' => 'ProblemTypeController', 'action' => 'index']);
 
-    // $router->add('posts', ['controller' => 'HomeController', 'action' => 'show']);
-    // $router->add('posts/{id:\d+}', ['controller' => 'Posts', 'action' => 'show']);
-    // $router->add('hello/{name}', ['controller' => 'HomeController', 'action' => 'showHello']);
-    // $router->add('custom/{controller}/{action}');
-
 } else if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $router->add('login', ['controller' => 'AuthController', 'action' => 'login']);
     $router->add('logout', ['controller' => 'AuthController', 'action' => 'logout']);
@@ -51,6 +46,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 } else if ($_SERVER['REQUEST_METHOD'] === 'PUT') {
     $router->add('api/v1/user/{id:\d+}', ['controller' => 'UserController', 'action' => 'update']);
+    $router->add('api/v1/user/profile', ['controller' => 'UserController', 'action' => 'updateProfile']);
+    $router->add('api/v1/user/password', ['controller' => 'UserController', 'action' => 'updatePassword']);
     $router->add('api/v1/report/{id:\d+}', ['controller' => 'ReportController', 'action' => 'update']);
 } else if ($_SERVER['REQUEST_METHOD'] === 'DELETE') {
     $router->add('api/v1/user/{id:\d+}', ['controller' => 'UserController', 'action' => 'destroy']);

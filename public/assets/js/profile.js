@@ -3,13 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    const csrfToken = document.querySelector("#csrf").getAttribute("value");
 
     try {
       const response = await fetch("/api/v1/user/profile", {
         method: 'PUT',
         headers: {
-          'X-CSRF-TOKEN': csrfToken,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)
@@ -30,7 +28,6 @@ document.addEventListener("DOMContentLoaded", () => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const data = Object.fromEntries(formData.entries());
-    const csrfToken = document.querySelector("#csrf").getAttribute("value");
 
     // validasi data
     if (data.newPassword !== data.confirmPassword) {
@@ -44,7 +41,6 @@ document.addEventListener("DOMContentLoaded", () => {
       const response = await fetch("/api/v1/user/password", {
         method: 'PUT',
         headers: {
-          'X-CSRF-TOKEN': csrfToken,
           'Content-Type': 'application/json'
         },
         body: JSON.stringify(data)

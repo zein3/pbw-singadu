@@ -104,4 +104,64 @@ class UserController extends Controller {
             $this->json(['error' => 'terjadi kesalahan saat menghapus data']);
         }
     }
+
+    public function updateProfile() {
+        AuthHelper::performAuthentication();
+        $body = file_get_contents('php://input');
+        $data = json_decode($body);
+
+        $user = AuthHelper::getAuthenticatedUser();
+        
+        if (empty($data->name) || empty($data->email)) {
+            http_response_code(400);
+            $this->json(['error' => 'semua data harus diisi']);
+            return;
+        }
+
+        try {
+            $user->name = $data->name;
+            $user->email = $data->email;
+
+            $user->save();
+            $this->json(['message' => 'success']);
+        } catch(PDOException $ex) {
+            http_response_code(500);
+            $this->json(['error' => 'terjadi masalah saat mengubah data']);
+        }
+    }
+
+    public function updatePassword() {
+        AuthHelper::performAuthentication();
+        $body = file_get_contents('php://input');
+        $data = json_decode($body);
+
+        $user = AuthHelper::getAuthenticatedUser();
+
+        if (empty($data->newPassword) || empty($data->confirmPassword) || empty($data->oldPassword)) {
+            http_response_code(400);
+            $this->json(['error' => 'semua data harus diisi']);
+            return;
+        }
+
+        if (!password_verify($data->oldPassword, $user->password)) {
+            http_response_code(400);
+            $this->json(['old password' => 'wrong password']);
+            return;
+        }
+
+        if ($data->newPassword !== $data->confirmPassword) {
+            http_response_code(400);
+            $this->json(['confirm password' => 'new passwords do not match']);
+            return;
+        }
+
+        try {
+            $user->password = password_hash($data->newPassword, PASSWORD_BCRYPT);
+            $user->save();
+            $this->json(['message' => 'success']);
+        } catch(PDOException $ex) {
+            http_response_code(500);
+            $this->json(['error' => 'terdapat masalah saat mengubah data']);
+        }
+    }
 }

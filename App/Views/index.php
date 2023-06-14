@@ -55,8 +55,8 @@
         <div class="stat-grid-item" style="grid-column: 1 / span 3;">
           <!-- Pie chart laporan -->
           <canvas id="reports-pie-chart" width="400" height="400" role="img" aria-label="Pie Chart Laporan">
-            <p><span id="jumlah-laporan-selesai" th:text="${jumlah_laporan_selesai}"></span> laporan sudah diselesaikan</p>
-            <p><span id="jumlah-laporan-belum-selesai" th:text="${jumlah_laporan - jumlah_laporan_selesai}"></span> laporan belum diselesaikan</p>
+            <p><span id="jumlah-laporan-selesai"><?= $data['jumlah_laporan_selesai'] ?></span> laporan sudah diselesaikan</p>
+            <p><span id="jumlah-laporan-belum-selesai"><?= $data['jumlah_laporan_belum_selesai'] ?></span> laporan belum diselesaikan</p>
           </canvas>
         </div>
       </div>

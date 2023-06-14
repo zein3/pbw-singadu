@@ -32,7 +32,7 @@ class AuthController extends Controller
 
             header("Location: /");
         } else {
-            header('Location: /login?error="Wrong email or password"');
+            header('Location: /login?error=Wrong email or password');
         }
     }
 

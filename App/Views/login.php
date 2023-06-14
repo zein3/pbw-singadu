@@ -22,6 +22,27 @@
         <h2 class="h2">SISTEM PENGADUAN TERPADU</h2>
       </header>
 
+      <?php if(isset($_GET['success'])): ?>
+      <div class="alert success open">
+        <span><?= $_GET['success'] ?></span>
+        <div class="btn-icon" style="margin-left: auto;" onclick="this.parentElement.classList.remove('open')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+      </div>
+      <?php endif; ?>
+      <?php if(isset($_GET['error'])): ?>
+      <div class="alert danger open">
+        <span><?= $_GET['error'] ?></span>
+        <div class="btn-icon" style="margin-left: auto;" onclick="this.parentElement.classList.remove('open')">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="icon">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </div>
+      </div>
+      <?php endif; ?>
+
       <form action="/login" method="POST">
         <div class="form-div big">
           <input class="form-input" type="email" name="email" placeholder="Email" required>

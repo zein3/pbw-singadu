@@ -19,11 +19,9 @@
   <script src="/assets/js/daftar-laporan.js"></script>
 </head>
 <body>
-  <!-- <nav th:replace="~{fragments/nav :: nav}"></nav> -->
   <?php include __DIR__ . '/../components/navbar.php' ?>
 
   <main class="main">
-    <!-- <nav th:replace="~{fragments/sidebar :: sidebar}"></nav> -->
     <?php include __DIR__ . '/../components/sidebar.php' ?>
     <div class="content">
 
@@ -224,7 +222,6 @@
             } else {
               const error = await response.json();
               showError(error, "edit-report-error-alert");
-              // showError({ "error": "Gagal mengubah laporan" }, "edit-report-error-alert");
             }
           } catch (e) {
 
@@ -234,7 +231,6 @@
     </div>
   </div>
 
-  <!-- <div th:replace="~{fragments/modal :: success-modal}"></div> -->
   <?php include __DIR__ . '/../components/success-modal.php' ?>
 
 </body>

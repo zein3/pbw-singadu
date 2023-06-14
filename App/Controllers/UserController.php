@@ -51,6 +51,7 @@ class UserController extends Controller {
             $user->role = $data->role;
 
             $user->save();
+            $this->json(['message' => 'success']);
         } catch(PDOException $ex) {
             error_log($ex->getMessage());
             http_response_code(500);
@@ -82,6 +83,7 @@ class UserController extends Controller {
             }
 
             $user->save();
+            $this->json(['message' => 'success']);
         } catch(PDOException $ex) {
             http_response_code(500);
             $this->json(['error' => 'terdapat masalah saat memperbarui data']);
@@ -96,6 +98,7 @@ class UserController extends Controller {
         try {
             $user = User::get($id);
             $user->delete();
+            $this->json(['message' => 'success']);
         } catch(PDOException $ex) {
             http_response_code(500);
             $this->json(['error' => 'terjadi kesalahan saat menghapus data']);

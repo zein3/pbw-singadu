@@ -14,7 +14,8 @@ document.addEventListener("DOMContentLoaded", () => {
       });
 
       if (response.status == 200) {
-        alert("Berhasil mengubah profil");
+        document.querySelector("#success-modal-message").innerText = "Berhasil mengubah profil";
+        document.querySelector("#success-modal").classList.add("open");
       } else {
         const errors = await response.json();
         showError(errors, "edit-profile-error-alert")
@@ -50,7 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const result = await response.text();
         console.log(result);
         if (result != 0) {
-          alert("Successfully changed password");
+          document.querySelector("#success-modal-message").innerText = "Berhasil mengubah password";
+          document.querySelector("#success-modal").classList.add("open");
         } else {
           showError({"error": "Password salah"}, "edit-password-error-alert");
         }

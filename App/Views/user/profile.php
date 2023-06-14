@@ -103,5 +103,8 @@
 
     </div>
   </main>
+
+  <?php include __DIR__ . '/../components/success-modal.php' ?>
+
 </body>
 </html>

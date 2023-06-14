@@ -29,14 +29,12 @@ const openEditReportModal = (problemId) => {
   form.querySelector('[name="reporterId"]').value = report.reporter.id;
   form.querySelector('[name="reporterName"]').value = report.reporter.name;
   form.querySelector('[name="reportedDate"]').valueAsDate = new Date(report.reportedDate);
-  form.querySelector('[name="solved"]').checked = report.solved;
+  form.querySelector('[name="solved"]').checked = (report.solved == 1) ? true : false;
 
   const pTypeOptions = form.querySelector('[name="problemTypeId"]').children;
   Array.from(pTypeOptions).map(option => {
     option.selected = (option.value == report.problemType.id);
   });
-
-  // form.querySelector('[name=""]').value = report.
 
   document.querySelector("#edit-report-modal").classList.add('open');
 }
@@ -50,7 +48,7 @@ const loadLaporan = (dataLaporan) => {
             <tr>
               <td>${laporan.problemType.name}</td>
               <td>${laporan.reporter.name}</td>
-              <td>${laporan.solved ? "Selesai" : "Belum selesai"}</td>
+              <td>${(laporan.solved == 1) ? "Selesai" : "Belum selesai"}</td>
               <td>
                 <span style="margin-right: 0.5rem;" class="btn-action" onclick="openProblemDetailModal('${laporan.id}')">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="icon small primary">

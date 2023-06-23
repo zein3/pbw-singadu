@@ -10,7 +10,7 @@
         </div>
 
         <a class="btn menu">
-          <img src="/assets/svg/bps.svg" class="icon">
+          <img alt="logo BPS" src="/assets/svg/bps.svg" class="icon">
           <span>SI-NGADU</span>
         </a>
 

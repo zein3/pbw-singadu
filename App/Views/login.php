@@ -18,7 +18,7 @@
   <main class="login-column">
     <div class="login-card">
       <header class="login-header">
-        <img src="assets/svg/bps.svg" height="128" width="128">
+        <img alt="logo BPS" src="assets/svg/bps.svg" height="128" width="128">
         <h2 class="h2">SISTEM PENGADUAN TERPADU</h2>
       </header>
 

@@ -8,4 +8,5 @@ Singadu adalah sebuah website yang dirancang khusus untuk mendukung pelaksanaan 
 
 1. Ubah nama file `.env.copy` menjadi `.env`  
 2. Atur konfigurasi database di `.env`  
-3. Arahkan semua *request* ke folder public  
+3. Impor database `db.sql`  
+4. Arahkan semua *request* ke folder public  
